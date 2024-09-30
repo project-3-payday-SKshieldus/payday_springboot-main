@@ -23,14 +23,18 @@ public class ReceiptServiceImpl implements ReceiptService {
 
 
     @Override
-    public Receipt createReceipt(int receiptNumber, Long roomId) {
+    public Receipt createReceipt(Receipt receiptReq, Long roomId) {
         Optional<Room> roomOptional = roomRepository.findById(roomId);
         if (roomOptional.isPresent()) {
             Room room = roomOptional.get();
 
             Receipt receipt = new Receipt();
-            receipt.setReceiptNumber(receiptNumber);
+            receipt.setReceiptNumber(receiptReq.getReceiptNumber());
             receipt.setRoom(room);
+            receipt.setAddress(receiptReq.getAddress());
+            receipt.setDate(receiptReq.getDate());
+            receipt.setTitle(receiptReq.getTitle());
+            
             return receiptRepository.save(receipt);
         } else {
             throw new RuntimeException("Room이 유효하지 않습니다.");

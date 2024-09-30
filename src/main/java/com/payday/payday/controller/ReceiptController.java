@@ -16,11 +16,12 @@ public class ReceiptController {
 
     private ReceiptService receiptService;
 
+    // 제목 등등 으로 인해 receipt 를 받는걸로 .. 수정
     @PostMapping("/{roomId}")
-    public ResponseEntity<Receipt> createReceipt(@RequestParam int receiptNumber,
-                                                 @RequestParam Long roomId) {
+    public ResponseEntity<Receipt> createReceipt(@RequestBody Receipt receiptReq,
+                                                 @PathVariable Long roomId) {
 
-        Receipt receipt = receiptService.createReceipt(receiptNumber, roomId);
+        Receipt receipt = receiptService.createReceipt(receiptReq, roomId);
         return ResponseEntity.ok(receipt);
     }
 

@@ -32,8 +32,11 @@ public class RoomController {
 
     // initalizer
     @PostMapping
+    @Transactional
     public ResponseEntity<Room> createRoom(@RequestBody RoomMetadataDto roomMetadataDto) {
         Room room = roomService.createRoom(roomMetadataDto);
+        memberService.createMember(roomMetadataDto.getLeader(), room.getRoomId());
+        // if all ok -> do not raise exception && Transactional
         return ResponseEntity.ok(room);
     }
 
@@ -44,7 +47,7 @@ public class RoomController {
         return ResponseEntity.ok(room);
     }
 
-    // 그냥 getRoom 쓰는게 나을듯
+    // 영수증만 get
     @GetMapping("/{roomId}/receipt")
     public ResponseEntity<List<Receipt>> getALLReceiptInRoom(@PathVariable Long roomId) {
         Room room = roomService.getRoomById(roomId);

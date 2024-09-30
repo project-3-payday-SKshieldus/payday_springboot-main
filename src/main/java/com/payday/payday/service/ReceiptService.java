@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ReceiptService {
     // initializer
-    public Receipt createReceipt(int receiptNumber, Long roomId);
+    public Receipt createReceipt(Receipt receiptReq, Long roomId);
 
     // 어떤 상황에서든 조회가능한 jpql Query, 비상 시 코드
     public Optional<Receipt> getReceipt(Long roomId, int receiptNumber);

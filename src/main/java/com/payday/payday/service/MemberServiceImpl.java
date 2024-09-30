@@ -38,7 +38,7 @@ public class MemberServiceImpl implements MemberService {
         if (qs.isPresent()) {
             return qs.get();
         } else {
-            throw new RuntimeException("유효하지 않은 member이름 입니다" + memberName);
+            throw new RuntimeException("유효하지 않은 member이름 입니다 :s" + memberName);
         }
     }
 
@@ -65,7 +65,7 @@ public class MemberServiceImpl implements MemberService {
 
 
         } else {
-            throw new RuntimeException("Member 개별 영수증 선택에 오류가 발생하였습니다." + roomId + member.getMemberName());
+            throw new RuntimeException("Member 개별 영수증 선택에 오류가 발생하였습니다." + roomId + "," + member.getMemberName());
         }
     }
 }

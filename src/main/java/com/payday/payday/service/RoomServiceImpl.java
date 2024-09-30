@@ -3,6 +3,7 @@ package com.payday.payday.service;
 import com.payday.payday.dto.RoomMetadataDto;
 
 import com.payday.payday.entity.Room;
+import com.payday.payday.repository.MemberRepository;
 import com.payday.payday.repository.RoomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class RoomServiceImpl implements RoomService {
                 .leader(dto.getLeader())
                 .generatedUrl(dto.getGeneratedUrl())
                 .build();
+
         return roomRepository.save(room);
     }
 
