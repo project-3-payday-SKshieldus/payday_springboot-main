@@ -31,6 +31,8 @@ public class Receipt {
     private String date;
     private String address;
 
+    private String imgURL;
+    private String resultImgURL;
 
     // 수정 필요 OR 내가 고른 정산 내역 코드도 작성필요
     @ElementCollection
